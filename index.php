@@ -2,11 +2,12 @@
 
 define('APP', 'app');
 define('HELPER','app/helpers');
-
+$config = [];
 foreach(glob(HELPER.'/*.php') AS $key)
 {
 	include_once($key);
 }
+include_once('app/config/Database.php');
 $uri = '';
 if(!empty($_SERVER['PATH_INFO']))
 {
