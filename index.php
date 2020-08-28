@@ -9,10 +9,12 @@ foreach(glob(HELPER.'/*.php') AS $key)
 }
 include_once('app/config/Database.php');
 $uri = '';
+pr($_SERVER);
 if(!empty($_SERVER['PATH_INFO']))
 {
 	$uri = explode('/',$_SERVER['PATH_INFO']);
 }
+
 if(!empty($uri['1']))
 {
 	foreach(glob(APP.'/controllers/*.php') AS $key)

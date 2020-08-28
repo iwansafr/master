@@ -11,6 +11,19 @@ function e404($msg)
 	echo $msg;
 	die();
 }
+function load_model($file = '')
+{
+	if(!empty($file))
+	{
+		$path_file = 'app/models/'.$file.'.php';
+		if(file_exists($path_file))
+		{
+			include_once($path_file);
+		}else{
+			e404('file model '.$file.' tidak ditemukan');
+		}
+	}
+}
 function view($file = '', $data = array())
 {
 	if(!empty($file))
@@ -22,6 +35,12 @@ function view($file = '', $data = array())
 			 $$key = $value;
 			}
 		}
-		include 'app/views/'.$file.'.php';
+		$path_file = 'app/views/'.$file.'.php';
+		if(file_exists($path_file))
+		{
+			include $path_file;
+		}else{
+			e404('file '.$file.'.php tidak ditemukan');
+		}
 	}
 }
